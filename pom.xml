@@ -52,6 +52,15 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- 热启动 修改之后可以实时生效 该模块在完整的打包环境下运行的时候会被禁用。
+		如果使用java -jar启动应用或者用一个特定的classloader启动，他会被认为是"生产环境"-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>1.5.4.RELEASE</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -59,6 +68,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
