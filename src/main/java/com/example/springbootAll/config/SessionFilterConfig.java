@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -52,13 +51,14 @@ public class SessionFilterConfig {
     }
 
     @Bean
+    //@Order(Integer.MAX_VALUE)
     public FilterRegistrationBean filterRegistration() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(sessionFilter());
         registration.addUrlPatterns("/*");
         registration.addInitParameter("paramName", "paramValue");
         registration.setName("sessionFilter");
-        //当有多个过滤器时 按照参数的大小，从小到大的顺序来执行过滤器
+        //当有多个过滤器时 按照参数的大小，从小到大的顺序来执行过滤器 (无论使用注解，还是这种情况都可以)
         registration.setOrder(Integer.MAX_VALUE);
         return registration;
     }
