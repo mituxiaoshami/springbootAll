@@ -27,7 +27,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 //如果有对数据库进行操作，配置事务的回滚 此时需要自己配置transactionManager这个Bean
 //@TransactionConfiguration(transactionManager = "transactionManager",defaultRollback = true)
 //@Transactional
-public class HelloTests {
+public class HelloTest {
 
     private MockMvc mvc;
 

@@ -25,6 +25,10 @@ public class RedisTest {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 首先这里注入了RedisTemplate对象，联想到Spring 的 JdbcTemplate
+     * RedisTemplate封装了RedisConnection，具有连接管理，序列化和Redis操作等功能
+     */
     @Autowired
     private RedisTemplate redisTemplate;
 
@@ -38,9 +42,10 @@ public class RedisTest {
     @Test
     public void testObj() throws Exception {
         User user=new User("aa@126.com", "aa", "aa123456", "aa","123");
+        // Redis操作视图接口类用的是ValueOperations 还有其他的操作视图ListOperations、SetOperations、ZSetOperations 和 HashOperations
         ValueOperations<String, User> operations=redisTemplate.opsForValue();
-        operations.set("com.neox", user);
-        operations.set("com.neo.f", user,1, TimeUnit.SECONDS);
+        operations.set("hello", user);
+        operations.set("hello world", user,1, TimeUnit.SECONDS);
         Thread.sleep(1000);
         //redisTemplate.delete("com.neo.f");
         boolean exists=redisTemplate.hasKey("com.neo.f");

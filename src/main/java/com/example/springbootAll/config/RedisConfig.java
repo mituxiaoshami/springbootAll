@@ -47,7 +47,7 @@ public class RedisConfig extends CachingConfigurerSupport{
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
         RedisCacheManager rcm = new RedisCacheManager(redisTemplate);
         //设置缓存过期时间
-        //rcm.setDefaultExpiration(60);//秒
+        rcm.setDefaultExpiration(60);//秒
         return rcm;
     }
 
@@ -59,6 +59,8 @@ public class RedisConfig extends CachingConfigurerSupport{
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
+        // 如果需要自定义序列化实现，只要实现 RedisSerializer 接口去实现即可，然后在使用 RedisTemplate.setValueSerializer 方法去设置你实现的序列化实现。
+        // template.setValueSerializer(new RedisObjectSerializer());
         template.setValueSerializer(jackson2JsonRedisSerializer);
         template.afterPropertiesSet();
         return template;
