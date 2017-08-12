@@ -7,5 +7,4 @@ package com.example.springbootAll;
  */
 public class SessionTest {
 
-
 }

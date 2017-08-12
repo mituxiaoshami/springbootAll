@@ -1,0 +1,35 @@
+Jpa的多表复杂查询:
+
+多表查询在spring data jpa中有两种实现方式，第一种是利用hibernate的级联查询来实现，第二种是创建一个结果集的接口来接收连表查询后的接口
+
+第二种方式:
+
+首先需要定义一个结果集的接口类:
+
+public interface HotelSummary {
+
+    City getCity();
+    String getName();
+    Double getAverageRating();
+    default Integer getAverageRatingRounded() {
+        return getAverageRating() == null ? null : (int) Math.round(getAverageRating());
+    }
+}
+
+查询的方法返回类型设置为新创建的接口:
+@Query("select h.city as city, h.name as name, avg(r.rating) as averageRating "
+        - "from Hotel h left outer join h.reviews r where h.city = ?1 group by h")
+Page<HotelSummary> findByCity(City city, Pageable pageable);
+
+@Query("select h.name as name, avg(r.rating) as averageRating "
+        - "from Hotel h left outer join h.reviews r  group by h")
+Page<HotelSummary> findByCity(Pageable pageable);
+
+
+使用(在service业务逻辑层 hotelRepository用@Autowire注入):
+Page<HotelSummary> hotels = this.hotelRepository.findByCity(new PageRequest(0, 10, Direction.ASC, "name"));
+for(HotelSummary summay:hotels){
+        System.out.println("Name" +summay.getName());
+    }
+
+在运行中Spring会给接口（HotelSummary）自动生产一个代理类来接收返回的结果，代码汇总使用getXX的形式来获取

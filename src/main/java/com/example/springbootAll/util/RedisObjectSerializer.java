@@ -1,4 +1,4 @@
-package com.example.springbootAll.config;
+package com.example.springbootAll.util;
 
 
 import net.sf.json.JSONObject;

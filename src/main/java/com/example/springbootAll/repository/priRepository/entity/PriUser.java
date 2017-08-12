@@ -1,11 +1,8 @@
-package com.example.springbootAll.entity;
+package com.example.springbootAll.repository.priRepository.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -15,7 +12,8 @@ import java.io.Serializable;
  */
 @Entity
 @Data
-public class User implements Serializable {
+@Table(name = "user")
+public class PriUser implements Serializable {
 
     // 存储到Redis 要实现对象的序列化 不然控制台会报出异常
     // java.lang.IllegalArgumentException:DefaultSerializer requires a Serializable payload but received an Object of type
@@ -42,11 +40,15 @@ public class User implements Serializable {
     @Column(nullable = false,length = 20)
     private String regTime;
 
-    public User() {
+    //不需要和数据库来关联只是在展示的时候做计算，只需要加上@Transient属性既可
+    @Transient
+    private String  cityName;
+
+    public PriUser() {
 
     }
 
-    public User(String userName,String passWord,String email,String nickName,String regTime) {
+    public PriUser(String userName, String passWord, String email, String nickName, String regTime) {
         this();
         this.userName = userName;
         this.passWord = passWord;

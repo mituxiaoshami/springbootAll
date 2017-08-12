@@ -1,6 +1,6 @@
 package com.example.springbootAll;
 
-import com.example.springbootAll.entity.User;
+import com.example.springbootAll.repository.priRepository.entity.PriUser;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,9 +41,9 @@ public class RedisTest {
 
     @Test
     public void testObj() throws Exception {
-        User user=new User("aa@126.com", "aa", "aa123456", "aa","123");
+        PriUser user=new PriUser("aa@126.com", "aa", "aa123456", "aa","123");
         // Redis操作视图接口类用的是ValueOperations 还有其他的操作视图ListOperations、SetOperations、ZSetOperations 和 HashOperations
-        ValueOperations<String, User> operations=redisTemplate.opsForValue();
+        ValueOperations<String, PriUser> operations=redisTemplate.opsForValue();
         operations.set("hello", user);
         operations.set("hello world", user,1, TimeUnit.SECONDS);
         Thread.sleep(1000);
