@@ -2,8 +2,9 @@ package com.example.springbootAll.service;
 
 
 
-import com.example.springbootAll.repository.priRepository.entity.PriUser;
-import com.example.springbootAll.repository.secRepository.entity.SecUser;
+import com.example.springbootAll.entity.priEntity.PriUser;
+import com.example.springbootAll.entity.secEntity.SecUser;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface UserService {
      List<SecUser> findSecUsers();
 
      List<PriUser> findPriUsers();
+
+     Page<PriUser> findPagePriUsers();
 }

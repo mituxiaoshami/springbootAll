@@ -1,6 +1,6 @@
-package com.example.springbootAll.repository.secRepository.repository;
+package com.example.springbootAll.repository.secRepository;
 
-import com.example.springbootAll.repository.secRepository.entity.SecUser;
+import com.example.springbootAll.entity.secEntity.SecUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

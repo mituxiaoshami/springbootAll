@@ -1,6 +1,6 @@
-package com.example.springbootAll.repository.priRepository.repository;
+package com.example.springbootAll.repository.priRepository;
 
-import com.example.springbootAll.repository.priRepository.entity.PriUser;
+import com.example.springbootAll.entity.priEntity.PriUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

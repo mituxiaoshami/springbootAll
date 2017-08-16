@@ -1,12 +1,15 @@
 package com.example.springbootAll;
 
-import com.example.springbootAll.repository.priRepository.entity.PriUser;
-import com.example.springbootAll.repository.priRepository.repository.PriUserRepository;
+import com.example.springbootAll.entity.priEntity.PriUser;
+import com.example.springbootAll.repository.priRepository.PriUserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -24,6 +27,8 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class PriSecUserRepositoryTest {
+
+    Logger logger = LoggerFactory.getLogger(PriSecUserRepositoryTest.class);
 
     @Autowired
     private PriUserRepository priUserRepository;
@@ -51,7 +56,8 @@ public class PriSecUserRepositoryTest {
         int page=1,size=10;
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(page, size, sort);
-        priUserRepository.findAll(pageable);
+        Page<PriUser> priUsers = priUserRepository.findAll(pageable);
+        logger.info("------------------------priUsers"+priUsers);
         priUserRepository.findByUserName("testName", pageable);
 
         List<PriUser> userList= this.priUserRepository.findAll();

@@ -1,6 +1,6 @@
 package com.example.springbootAll;
 
-import com.example.springbootAll.repository.priRepository.entity.PriUser;
+import com.example.springbootAll.entity.priEntity.PriUser;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

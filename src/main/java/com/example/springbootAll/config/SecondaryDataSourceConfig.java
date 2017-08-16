@@ -40,7 +40,7 @@ public class SecondaryDataSourceConfig {
         return builder
                 .dataSource(secDataSource)
                 .properties(getVendorProperties(secDataSource))
-                .packages(new String[]{"com.example.springbootAll.repository.secRepository.entity"}) //设置应用creditDataSource的基础包名
+                .packages(new String[]{"com.example.springbootAll.entity.secEntity"}) //设置应用creditDataSource的基础包名
                 .persistenceUnit("secPersistenceUnit")
                 .build();
     }

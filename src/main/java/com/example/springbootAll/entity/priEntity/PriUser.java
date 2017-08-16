@@ -1,4 +1,4 @@
-package com.example.springbootAll.repository.secRepository.entity;
+package com.example.springbootAll.entity.priEntity;
 
 import lombok.Data;
 
@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name = "user")
-public class SecUser implements Serializable {
+public class PriUser implements Serializable {
 
     // 存储到Redis 要实现对象的序列化 不然控制台会报出异常
     // java.lang.IllegalArgumentException:DefaultSerializer requires a Serializable payload but received an Object of type
@@ -44,11 +44,11 @@ public class SecUser implements Serializable {
     @Transient
     private String  cityName;
 
-    public SecUser() {
+    public PriUser() {
 
     }
 
-    public SecUser(String userName, String passWord, String email, String nickName, String regTime) {
+    public PriUser(String userName, String passWord, String email, String nickName, String regTime) {
         this();
         this.userName = userName;
         this.passWord = passWord;

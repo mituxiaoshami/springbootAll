@@ -42,7 +42,7 @@ public class PrimaryDataSourceConfig {
         return builder
                 .dataSource(priDataSource)
                 .properties(getVendorProperties(priDataSource))
-                .packages(new String[]{"com.example.springbootAll.repository.priRepository.entity"}) //设置应用creditDataSource的基础包名
+                .packages(new String[]{"com.example.springbootAll.entity.priEntity"}) //设置应用creditDataSource的基础包名
                 .persistenceUnit("priPersistenceUnit")
                 .build();
     }

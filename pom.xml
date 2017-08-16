@@ -151,6 +151,13 @@
 			<version>1.5.2.RELEASE</version>
 		</dependency>
 
+		<!-- RabbitMQ 消息队列 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+			<version>1.5.2.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
