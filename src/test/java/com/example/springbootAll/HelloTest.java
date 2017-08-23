@@ -60,4 +60,13 @@ public class HelloTest {
                 .andDo(MockMvcResultHandlers.print())
                 .andReturn();
     }
+
+    //验证controller是否正常响应并打印返回结果
+    @Test
+    public void testHello() throws Exception{
+        mvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn();
+    }
 }
