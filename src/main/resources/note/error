@@ -1,0 +1,14 @@
+在项目中遇到的坑:
+
+com.mysql.jdbc.exceptions.MySQLNonTransientConnectionException:
+
+1、因为Mysql在5以后针对超长时间DB连接做了一个处理，那就是如果一个DB连接在无任何操作情况下过了8个小时后，Mysql会自动把这个连接关闭。所以使用连接池的时候虽然连接对象还在但是链接数据库的！
+2、还有一种情况就是连接数目过多
+
+解决方法:
+
+1、增加wait_timeout的时间。
+2、减少Connection pools中connection的lifetime。
+3、测试Connection pools中connection的有效性。
+4、设置mysql 最大连接数(具体方法百度)
+

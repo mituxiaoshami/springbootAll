@@ -204,6 +204,14 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- 在编译时期望使用指定JDK版本 -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 		</plugins>
 		<resources>
 			<!-- 指定资源文件夹路径 -->
