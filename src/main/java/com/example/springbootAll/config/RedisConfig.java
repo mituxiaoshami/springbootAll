@@ -23,9 +23,14 @@ import java.lang.reflect.Method;
  * @Date: 14:24 2017/8/8
  */
 @Configuration
+//启用缓存
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport{
 
+    /**
+     * 自定义key 此方法将会根据类名+方法名+所有参数的值生成唯一一个key，即使@Cacheable中的value属性一样，key也会不一样。
+     * @return
+     */
     @Bean
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {
@@ -42,6 +47,11 @@ public class RedisConfig extends CachingConfigurerSupport{
         };
     }
 
+    /**
+     * 缓存管理器
+     * @param redisTemplate
+     * @return
+     */
     @SuppressWarnings("rawtypes")
     @Bean
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
@@ -51,6 +61,12 @@ public class RedisConfig extends CachingConfigurerSupport{
         return rcm;
     }
 
+    /**
+     * redis模板操作类,类似于jdbcTemplate的一个类
+     * 虽然CacheManager也能获取到Cache对象，但是操作起来没有那么灵活
+     * @param factory
+     * @return
+     */
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
         StringRedisTemplate template = new StringRedisTemplate(factory);

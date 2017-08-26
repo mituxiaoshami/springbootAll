@@ -1,4 +1,4 @@
-package com.example.springbootAll.config;
+package com.example.springbootAll.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +63,9 @@ public class SessionFilterConfig {
         return registration;
     }
 
+    /**
+     * 过滤器属于Servlet范畴的API，与Spring没什么关系。在Web开发中，除了使用Filter来过滤web请求外，还可以使用Spring的HandlerInterceptor(拦截器)
+     */
     public class SessionFilter implements Filter{
 
         public void init(FilterConfig config) {

@@ -1,0 +1,10 @@
+项目中比较重要的点:
+
+1、在实际应用中，有时候会在项目启动的时候就去加载一些数据或做一些事情，如果有这样的需求，
+   Spring Boot提供了一个方法，通过实现接口CommandLineRunner 来实现，就可以了(实现run方法)
+
+2、Spring boot 的主 Servlet 为 DispatcherServlet，其默认的url-pattern为“/”。
+   也许我们在应用中还需要定义更多的Servlet，在 SpringBootApplication 上使用@ServletComponentScan注解(扫描servlet)后，Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册.
+   (继承HttpServlet 重写其中的doGet和doPost方法)
+
+3、过滤器（Filter）和监听器（Listener）的注册方法和 Servlet 一样，通过使用@WebFilter、@WebListener注解来自动注册

@@ -19,9 +19,9 @@ import java.util.regex.Pattern;
  * 增删改 -不能在这里面抓取异常 -因为可能有事务处理
  */
 @Component
-public class RedisHandle implements RedisUtil<String, Object> {
+public class RedisUtilImpl implements RedisUtil<String, Object> {
 
-    private Logger logger = Logger.getLogger(RedisHandle.class);
+    private Logger logger = Logger.getLogger(RedisUtilImpl.class);
 
     @Autowired
     protected RedisTemplate redisTemplate;
