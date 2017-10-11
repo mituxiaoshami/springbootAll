@@ -25,7 +25,7 @@ import java.util.Set;
  * @Description: 全局异常处理
  * @Date: 9:13 2017/8/23
  */
-// @ControllerAdvice 是一个@Component 用于定义@ ExceptionHandler的，@InitBinder和@ModelAttribute方法，适用于所有使用@ RequestMapping方法
+// @ControllerAdvice 是一个@Component 用于定义@ ExceptionHandler的，@InitBinder和@ModelAttribute方法，适用于所有使用@RequestMapping方法
 // 并处理所有@ RequestMapping标注方法出现异常的统一处理。
 @ControllerAdvice
 @ResponseBody
